@@ -1,0 +1,32 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.blizzard.com/wow/ui/ 
+..\..\FrameXML\UI.xsd"> 
+
+<Frame name="autoinviter_Frame">
+	<Scripts>
+		<onLoad>
+			self:RegisterEvent("VARIABLES_LOADED");
+		</onLoad>
+		<onEvent>
+			if( event == "VARIABLES_LOADED" ) then
+				autoinviter_Init()
+			elseif( event == "CHAT_MSG_WHISPER") then
+				autoinviter_Whisper(...)
+			elseif( event == "CHAT_MSG_CHANNEL") then
+				autoinviter_CHANNEL(...)
+			elseif( event == "CHAT_MSG_GUILD") then
+				autoinviter_GUILD(...)
+			elseif( event == "CHAT_MSG_SAY") then
+				autoinviter_SAY(...)
+			elseif( event == "CHAT_MSG_YELL") then
+				autoinviter_YELL(...)
+			elseif( event == "PLAYER_PVP_KILLS_CHANGED") then
+				autoinviter_Kills(...)
+			elseif( event == "PARTY_INVITE_REQUEST") then
+				autoinviter_PARTY_INVITE_REQUEST(...)				
+			end
+		</onEvent>
+	</Scripts>
+</Frame>
+</Ui>

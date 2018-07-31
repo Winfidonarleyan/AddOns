@@ -1,0 +1,6 @@
+## Interface: 50200
+## Title: |cff6C8CD5Номер всего
+## Version: 5.5
+## Notes: Показывает все айди на спеллах/кв/ачтивках/предметах
+## Author: |cffff0000Kargatum
+core.lua

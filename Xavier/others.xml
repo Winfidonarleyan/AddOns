@@ -1,0 +1,89 @@
+<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.blizzard.com/wow/ui/   ..\..\FrameXML\UI.xsd" xmlns="http://www.blizzard.com/wow/ui/">
+	<Button name="Xavier_Others_Frame" inherits="Xavier_Window">
+		<Size>
+			<AbsDimension x="255" y="330" />
+		</Size>
+		<Anchors>
+			<Anchor point="LEFT" relativeTo="Xavier_Hud" relativePoint="RIGHT" />
+		</Anchors>
+		<Frames>
+			<MessageFrame name="$parent_MessageFrame1" parent="Xavier_Others_Frame" toplevel="true" fade="false">
+				<FontString inherits="ErrorFont" justifyH="CENTER" />
+				<Size>
+					<AbsDimension x="231" y="48" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="Xavier_Others_Frame">
+						<Offset x="12" y="-12" />
+					</Anchor>
+				</Anchors>
+				<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+					<BackgroundInsets>
+						<AbsInset left="11" right="12" top="12" bottom="11" />
+					</BackgroundInsets>
+					<TileSize>
+						<AbsValue val="32" />
+					</TileSize>
+					<EdgeSize>
+						<AbsValue val="32" />
+					</EdgeSize>
+				</Backdrop>
+				<Frames>
+					<EditBox name="$parent_sendname" inherits="Xavier_Input_Text">
+						<Size>
+							<AbsDimension x="184" y="18" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset x="44" y="-3" />
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<EditBox name="$parent_senditemID" inherits="Xavier_Input_Text">
+						<Size>
+							<AbsDimension x="142" y="18" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset x="44" y="-27" />
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parent_senditem" inherits="Xavier_Button" text="Send">
+						<Size>
+							<AbsDimension x="36" y="18" />
+						</Size>
+						<Anchors>
+							<Anchor point="LEFT">
+								<Offset x="192" y="-12" />
+							</Anchor>
+						</Anchors>
+						<Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga">
+							<BackgroundInsets>
+								<AbsInset left="2" right="2" top="2" bottom="2" />
+							</BackgroundInsets>
+							<EdgeSize>
+								<AbsValue val="13" />
+							</EdgeSize>
+							<Color r="0" g="0.4" b="1" />
+						</Backdrop>
+						<Scripts>
+							<OnClick>
+						Xavier.Hud.senditem();
+					</OnClick>
+						</Scripts>
+					</Button>
+				</Frames>
+			</MessageFrame>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+                Xavier.loadWindow(self, 'Others', false, nil);
+            </OnLoad>
+			<OnDoubleClick>
+                self:ClearAllPoints();
+                self:SetPoint("LEFT", "Xavier_Xavier_Hud", "RIGHT");
+            </OnDoubleClick>
+		</Scripts>
+	</Button>
+</Ui>

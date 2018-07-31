@@ -1,0 +1,42 @@
+{
+    // Используйте IntelliSense, чтобы узнать о возможных атрибутах.
+    // Наведите указатель мыши, чтобы просмотреть описания существующих атрибутов.
+    // Для получения дополнительной информации посетите: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "attach",
+            "type": "lua",
+            "request": "attach",
+            "stopOnEntry": true,
+            "ip": "localhost",
+            "port": 4278
+        },
+        {
+            "name": "launch",
+            "type": "lua",
+            "request": "launch",
+            "stopOnEntry": true,
+            "program": "${workspaceRoot}/xavier.lua",
+            "cwd": "${workspaceRoot}",
+            "path": "${workspaceRoot}/?.lua",
+            "cpath": "${workspaceRoot}/?.dll",
+            "arg": [],
+            "console": "utf8"
+        },
+        {
+            "name": "attach",
+            "type": "lua",
+            "request": "attach",
+            "stopOnEntry": true,
+            "ip": "localhost",
+            "port": 4278,
+            "sourceMaps": [
+                [
+                    "./",
+                    "${workspaceRoot}"
+                ]
+            ]
+        }
+    ]
+}

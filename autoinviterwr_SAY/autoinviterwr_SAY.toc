@@ -1,0 +1,8 @@
+## Interface: 303000
+## Title: |cff6C8CD5Модуль |cff14ECCF[Сказать]
+## Version: 3.0
+## Notes: Модуль |cff14ECCF[Сказать]
+## Author: |cffff0000Каргат
+## SavedVariables: AutoIDB
+autoinviterwr.xml
+autoinviterwr_SAY.lua

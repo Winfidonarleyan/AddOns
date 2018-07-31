@@ -1,0 +1,512 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ 
+ ..\..\FrameXML\UI.xsd">
+ <Font name="SystemFont_PixelFont" font="Interface\AddOns\Xavier\Fonts\Pixel.TTF" virtual="true">
+        <FontHeight>
+            <AbsValue val="10"/>
+        </FontHeight>
+    </Font>
+ 
+ <Font name="SystemFont_calibriFont" font="Interface\AddOns\Xavier\Fonts\calibri.TTF" virtual="true">
+        <FontHeight>
+            <AbsValue val="11"/>
+        </FontHeight>
+    </Font>
+ 
+ <Font name="SystemFont_OratorStdFont" font="Interface\AddOns\Xavier\Fonts\OratorStd.TTF" virtual="true">
+        <FontHeight>
+            <AbsValue val="10"/>
+        </FontHeight>
+    </Font>
+ 
+ <Font name="SystemFont_PrototypeFont" font="Interface\AddOns\Xavier\Fonts\Prototype.TTF" virtual="true">
+        <FontHeight>
+            <AbsValue val="10"/>
+        </FontHeight>
+    </Font>
+	
+	<Font name="SystemFont_Exo2MFont" font="Interface\AddOns\Xavier\Fonts\Exo2M.TTF" virtual="true">
+        <FontHeight>
+            <AbsValue val="10"/>
+        </FontHeight>
+    </Font>
+	
+	<Font name="SystemFont_mizufalpFont" font="Interface\AddOns\Xavier\Fonts\mizufalp.TTF" virtual="true">
+        <FontHeight>
+            <AbsValue val="8"/>
+        </FontHeight>
+    </Font>
+	
+	<Font name="SystemFont_visitor1Font" font="Interface\AddOns\Xavier\Fonts\visitor1.TTF" virtual="true">
+        <FontHeight>
+            <AbsValue val="10"/>
+        </FontHeight>
+    </Font>
+	
+	<Font name="SystemFont_RobotoFont" font="Interface\AddOns\Xavier\Fonts\Roboto.TTF" virtual="true">
+        <FontHeight>
+            <AbsValue val="11"/>
+        </FontHeight>
+    </Font>
+	
+ <Font name="SystemFont_StraitFont" font="Interface\AddOns\Xavier\Fonts\Strait.TTF" virtual="true">
+        <FontHeight>
+            <AbsValue val="11"/>
+        </FontHeight>
+    </Font>
+ 
+    <Font name="GenieFontNormalSmall" inherits="SystemFont_Exo2MFont" virtual="true">
+        <Color r="0.75" g="0.75" b="1" a="1"/>
+    </Font>
+    <Font name="GenieFontDisabledSmall" inherits="SystemFont_Exo2MFont" virtual="true">
+        <Color r="0.75" g="0.75" b="1" a="0.6"/>
+    </Font>
+    <Font name="GenieFontHighlightSmall" inherits="SystemFont_Exo2MFont" virtual="true">
+        <Color r="1" g="1" b="1" a="1"/>
+    </Font>
+    <Font name="GenieFonttitleSmall" inherits="SystemFont_Exo2MFont" virtual="true">
+	<FontHeight>
+            <AbsValue val="11"/>
+        </FontHeight>
+        <Color r="1" g="0.8" b="0" a="1"/>
+    </Font>
+    <Font name="GenieFontRedDisabledSmall" inherits="SystemFont_Shadow_Small" virtual="true">
+        <Color r="1" g="0.5" b="0.5" a="0.5"/>
+    </Font>
+
+    <Button name="Xavier_Window" virtual="true" toplevel="true" frameStrata="HIGH" parent="UIParent" movable="true" enableMouse="true" clampedToScreen="true" hidden="true">
+        <Frames>
+            <Frame name="$parent_Title">
+                <Size>
+                    <AbsDimension x="150" y="18" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" />
+                </Anchors>
+                <Backdrop bgfile="Interface\AddOns\Xavier\Textures\Glaze.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_medium.tga" tile="false">
+                    <EdgeSize>
+                        <AbsValue val="13"/>
+                    </EdgeSize>
+                    <BackgroundInsets>
+                        <AbsInset left="2" right="2" top="2" bottom="2"/>
+                    </BackgroundInsets>
+                    <Color r="0" g="0.4" b="0.8" a="1"/>
+                </Backdrop>
+                <Layers>
+                    <Layer>
+                        <FontString name="$parent_Text" inherits="GenieFontHighlightSmall" text="" justifyH="CENTER" />
+                    </Layer>
+                </Layers>
+            </Frame>
+            <Button name="$parent_Close" inherits="Xavier_Button" text="X">
+                <Size>
+                    <AbsDimension x="18" y="18" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPRIGHT">
+                        <Offset>
+                            <AbsDimension x="0" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+				<Backdrop bgfile="Interface\AddOns\Xavier\Textures\Glaze.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_medium.tga" tile="true">
+                    <EdgeSize>
+                        <AbsValue val="13"/>
+                    </EdgeSize>
+                    <TileSize>
+                        <AbsValue val="13"/>
+                    </TileSize>
+                    <BackgroundInsets>
+                        <AbsInset left="2" right="2" top="2" bottom="2"/>
+                    </BackgroundInsets>
+                    <Color r="1" g="0" b="0" a="1"/>
+                </Backdrop>
+                <Scripts>
+                    <OnClick>
+                        HideUIPanel(self:GetParent());
+                    </OnClick>
+                </Scripts>
+            </Button>
+            <Button name="$parent_Refresh" inherits="Xavier_Button" text="R" hidden='true'>
+                <Size>
+                    <AbsDimension x="18" y="18" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPRIGHT">
+                        <Offset>
+                            <AbsDimension x="-16" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+				<Backdrop bgfile="Interface\AddOns\Xavier\Textures\Glaze.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_medium.tga" tile="true">
+                    <EdgeSize>
+                        <AbsValue val="13"/>
+                    </EdgeSize>
+                    <TileSize>
+                        <AbsValue val="13"/>
+                    </TileSize>
+                    <BackgroundInsets>
+                        <AbsInset left="2" right="2" top="2" bottom="2"/>
+                    </BackgroundInsets>
+                    <Color r="0" g="0.4" b="0.8" a="1"/>
+                </Backdrop>
+                <Scripts>
+                    <OnClick>
+
+                    </OnClick>
+                </Scripts>
+            </Button>
+            <Frame name="$parent_Main" frameLevel="-1">
+                <Size>
+                    <AbsDimension x="150" y="15" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP">
+                        <Offset>
+                            <AbsDimension x="0" y="-16"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_medium.tga" tile="true">
+                    <EdgeSize>
+                        <AbsValue val="13"/>
+                    </EdgeSize>
+                    <TileSize>
+                        <AbsValue val="12"/>
+                    </TileSize>
+                    <BackgroundInsets>
+                        <AbsInset left="2" right="2" top="2" bottom="2"/>
+                    </BackgroundInsets>
+                    <Color r="0" g="0" b="0.1" a="1"/>
+                </Backdrop>
+            </Frame>
+        </Frames>
+        <Scripts>
+            <OnMouseDown>self:StartMoving();</OnMouseDown>
+            <OnMouseUp>self:StopMovingOrSizing();</OnMouseUp>
+            <OnDragStop>self:StopMovingOrSizing();</OnDragStop>
+        </Scripts>
+    </Button>
+
+    <Button name="Xavier_NextButton" virtual="true">
+        <Size>
+            <AbsDimension x="39" y="41"/>
+        </Size>
+        <NormalTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Up"/>
+        <PushedTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Down"/>
+        <DisabledTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Disabled"/>
+        <HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD"/>
+    </Button>
+    <Button name="Xavier_PreviousButton" virtual="true">
+        <Size>
+            <AbsDimension x="39" y="41"/>
+        </Size>
+        <NormalTexture file="Interface\Buttons\UI-SpellbookIcon-PrevPage-Up"/>
+        <PushedTexture file="Interface\Buttons\UI-SpellbookIcon-PrevPage-Down"/>
+        <DisabledTexture file="Interface\Buttons\UI-SpellbookIcon-PrevPage-Disabled"/>
+        <HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD"/>
+    </Button>
+
+
+    <Button name="Xavier_Button" virtual="true" frameStrata="DIALOG" frameLevel="2">
+        <Size>
+            <AbsDimension x="55" y="18"/>
+        </Size>
+        <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_medium.tga" tile="true">
+            <EdgeSize>
+                <AbsValue val="13"/>
+            </EdgeSize>
+            <TileSize>
+                <AbsValue val="13"/>
+            </TileSize>
+            <BackgroundInsets>
+                <AbsInset left="2" right="2" top="2" bottom="2"/>
+            </BackgroundInsets>
+            <Color r="0" g="0" b="1" a="1"/>
+        </Backdrop>
+        <NormalFont style="GenieFontHighlightSmall"/>
+        <HighlightFont style="GenieFontNormalSmall"/>
+        <DisabledFont style="GenieFontDisableSmall"/>
+        <ButtonText name="$parentText">
+            <Anchors>
+                <Anchor point="CENTER" />
+            </Anchors>
+        </ButtonText>
+    </Button>
+
+    <Button name="Xavier_LeftButton" inherits="Xavier_Button" virtual="true">
+        <ButtonText>
+            <Anchors>
+                <Anchor point="LEFT">
+                    <Offset>
+                        <AbsDimension x="3" y="0"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+        </ButtonText>
+    </Button>
+    <Button name="Xavier_BigButton" inherits="Xavier_Button" virtual="true">
+        <Size>
+            <AbsDimension x="60" y="22"/>
+        </Size>
+    </Button>
+
+    <CheckButton name="Xavier_CheckButton" inherits="InterfaceOptionsSmallCheckButtonTemplate" virtual="true">
+        <Size>
+            <AbsDimension x="18" y="18"/>
+        </Size>
+        <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_medium.tga" tile="true">
+            <EdgeSize>
+                <AbsValue val="13"/>
+            </EdgeSize>
+            <TileSize>
+                <AbsValue val="13"/>
+            </TileSize>
+            <BackgroundInsets>
+                <AbsInset left="2" right="2" top="2" bottom="2"/>
+            </BackgroundInsets>
+            <Color r="0" g="0" b="1" a="1"/>
+        </Backdrop>
+        <NormalTexture />
+        <PushedTexture />
+        <HighlightTexture />
+    </CheckButton>
+
+    <EditBox name="Xavier_Input_Text" enableMouse="true" virtual="true" autoFocus="false">
+        <Size>
+            <AbsDimension x="100" y="18" />
+        </Size>
+        <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_medium.tga" tile="true">
+            <EdgeSize>
+                <AbsValue val="13"/>
+            </EdgeSize>
+            <TileSize>
+                <AbsValue val="13"/>
+            </TileSize>
+            <BackgroundInsets>
+                <AbsInset left="2" right="2" top="2" bottom="2"/>
+            </BackgroundInsets>
+        </Backdrop>
+        <Scripts>
+            <OnLoad>
+                self:SetTextInsets(5, 5, 0, 2);
+                self:SetBackdropColor(0,0,0);
+            </OnLoad>
+            <OnEnterPressed>
+                self:ClearFocus();
+            </OnEnterPressed>
+            <OnEscapePressed>
+                self:ClearFocus();
+            </OnEscapePressed>
+        </Scripts>
+        <FontString inherits="GenieFontHighlightSmall" />
+    </EditBox>
+
+    <Frame name="Xavier_Input_TextArea" virtual="true">
+        <Frames>
+            <ScrollFrame name="$parent_Frame" inherits="UIPanelScrollFrameTemplate" enableMouse="true">
+                <Anchors>
+                    <Anchor point="CENTER" />
+                </Anchors>
+                <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_medium.tga" tile="true">
+                    <EdgeSize>
+                        <AbsValue val="13"/>
+                    </EdgeSize>
+                    <TileSize>
+                        <AbsValue val="13"/>
+                    </TileSize>
+                    <BackgroundInsets>
+                        <AbsInset left="2" right="2" top="2" bottom="2"/>
+                    </BackgroundInsets>
+                </Backdrop>
+                <Scripts>
+                    <OnLoad>
+                        self:SetBackdropColor(0,0,0);
+                    </OnLoad>
+                </Scripts>
+                <ScrollChild>
+                    <EditBox name="$parent_Text" multiLine="true">
+                        <Scripts>
+                            <OnTextChanged>
+                                ScrollingEdit_OnTextChanged(self, self:GetParent());
+                            </OnTextChanged>
+                            <OnCursorChanged>
+                                ScrollingEdit_OnCursorChanged(self, x, y-10, w, h);
+                            </OnCursorChanged>
+                            <OnUpdate>
+                                ScrollingEdit_OnUpdate(self, elapsed, self:GetParent());
+                            </OnUpdate>
+                            <OnEscapePressed>
+                                self:ClearFocus();
+                            </OnEscapePressed>
+                        </Scripts>
+                        <FontString inherits="GenieFontHighlightSmall" />
+                    </EditBox>
+                </ScrollChild>
+            </ScrollFrame>
+        </Frames>
+    </Frame>
+
+    <Button name="Xavier_Dropdown" virtual="true">
+        <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_medium.tga" tile="true">
+            <EdgeSize>
+                <AbsValue val="13"/>
+            </EdgeSize>
+            <TileSize>
+                <AbsValue val="13"/>
+            </TileSize>
+            <BackgroundInsets>
+                <AbsInset left="2" right="2" top="2" bottom="2"/>
+            </BackgroundInsets>
+        </Backdrop>
+        <Scripts>
+            <OnLoad>
+                self:SetBackdropColor(0,0,0);
+            </OnLoad>
+            <OnHide>CloseDropDownMenus();</OnHide>
+        </Scripts>
+        <NormalFont style="GenieFontHighlightSmall"/>
+        <HighlightFont style="GenieFontNormalSmall"/>
+        <DisabledFont style="GenieFontDisableSmall"/>
+        <NormalTexture name="$parentNormalTexture" file="Interface\ChatFrame\UI-ChatIcon-ScrollDown-Up">
+            <Size>
+                <AbsDimension x="18" y="18" />
+            </Size>
+            <Anchors>
+                <Anchor point="RIGHT" />
+            </Anchors>
+        </NormalTexture>
+        <PushedTexture name="$parentPushedTexture" file="Interface\ChatFrame\UI-ChatIcon-ScrollDown-Down">
+            <Size>
+                <AbsDimension x="18" y="18" />
+            </Size>
+            <Anchors>
+                <Anchor point="RIGHT" />
+            </Anchors>
+        </PushedTexture>
+        <DisabledTexture name="$parentDisabledTexture" file="Interface\ChatFrame\UI-ChatIcon-ScrollDown-Disabled">
+            <Size>
+                <AbsDimension x="18" y="18" />
+            </Size>
+            <Anchors>
+                <Anchor point="RIGHT" />
+            </Anchors>
+        </DisabledTexture>
+        <HighlightTexture name="$parentHighlightTexture" file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD">
+            <Size>
+                <AbsDimension x="18" y="18" />
+            </Size>
+            <Anchors>
+                <Anchor point="RIGHT" />
+            </Anchors>
+        </HighlightTexture>
+    </Button>
+
+    <GameTooltip name="Xavier_Tooltip" inherits="GameTooltipTemplate" parent="UIParent" enableMouse="true" toplevel="true" movable="true" frameStrata="TOOLTIP" hidden="true">
+        <Size>
+            <AbsDimension x="128" y="150"/>
+        </Size>
+        <Anchors>
+            <Anchor point="BOTTOM">
+                <Offset>
+                    <AbsDimension x="0" y="80"/>
+                </Offset>
+            </Anchor>
+        </Anchors>
+        <Frames>
+            <Button name="ItemRefCloseButton">
+                <Size>
+                    <AbsDimension x="32" y="32"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPRIGHT">
+                        <Offset>
+                            <AbsDimension x="1" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        HideUIPanel(Xavier_Tooltip);
+                    </OnClick>
+                </Scripts>
+                <NormalTexture file="Interface\Buttons\UI-Panel-MinimizeButton-Up"/>
+                <PushedTexture file="Interface\Buttons\UI-Panel-MinimizeButton-Down"/>
+                <HighlightTexture file="Interface\Buttons\UI-Panel-MinimizeButton-Highlight" alphaMode="ADD"/>
+            </Button>
+        </Frames>
+        <Scripts>
+            <OnLoad>
+                GameTooltip_OnLoad(self);
+                self:SetPadding(16);
+                self:RegisterForDrag("LeftButton");
+            </OnLoad>
+            <OnDragStart>
+                self:StartMoving();
+            </OnDragStart>
+            <OnDragStop>
+                self:StopMovingOrSizing();
+                ValidateFramePosition(self);
+            </OnDragStop>
+            <OnHide>
+                GameTooltip_OnHide(self);
+            </OnHide>
+        </Scripts>
+    </GameTooltip>
+
+
+
+
+
+
+    <Button name="Xavier_Minimap" parent="Minimap" enableMouse="true" movable="true" hidden="false">
+        <Size>
+            <AbsDimension x="33" y="33"/>
+        </Size>
+        <Anchors>
+            <Anchor point="TOPLEFT" />
+        </Anchors>
+        <Layers>
+            <Layer level="OVERLAY">
+                <Texture file="Interface\Minimap\MiniMap-TrackingBorder">
+                    <Size>
+                        <AbsDimension x="56" y="56"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT"/>
+                    </Anchors>
+                </Texture>
+            </Layer>
+        </Layers>
+        <Frames>
+            <Frame name="$parent_DraggingFrame" hidden="true">
+                <Scripts>
+                    <OnUpdate>
+                        Xavier.minimap.draggingFrame_OnUpdate();
+                    </OnUpdate>
+                </Scripts>
+            </Frame>
+        </Frames>
+        <Scripts>
+            <OnLoad>
+                self:RegisterForClicks("LeftButtonUp","RightButtonUp");
+                self:RegisterForDrag("LeftButton","RightButton");
+            </OnLoad>
+            <OnDragStart>
+                self:LockHighlight();
+                Xavier_Minimap_DraggingFrame:Show();
+            </OnDragStart>
+            <OnDragStop>
+                self:UnlockHighlight()
+                Xavier_Minimap_DraggingFrame:Hide();
+            </OnDragStop>
+            <OnClick>
+                Xavier.Hud.toggle();
+            </OnClick>
+        </Scripts>
+        <NormalTexture file = "Interface\AddOns\Xavier\Textures\Genie"/>
+        <PushedTexture file = "Interface\AddOns\Xavier\Textures\Genie"/>
+        <HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
+    </Button>
+</Ui>

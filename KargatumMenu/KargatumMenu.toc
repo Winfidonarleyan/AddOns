@@ -1,0 +1,8 @@
+## Interface: 50200
+## Title: |cff6C8CD5Kargatum Menu
+## Version: 3.3.5a 
+## URL: http://kargatum.ru
+## Notes: Доп меню при нажатии ПКМ по нику в чате
+## Author: |cffff0000 Kargatum
+KargatumMenu.lua
+KargatumMenu.xml

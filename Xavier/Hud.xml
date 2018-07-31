@@ -1,0 +1,893 @@
+<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.blizzard.com/wow/ui/   ..\..\FrameXML\UI.xsd" xmlns="http://www.blizzard.com/wow/ui/">
+	<Button frameLevel="2" name="Xavier_Hud_Statusbutton" virtual="true" inherits="SecureActionButtonTemplate" frameStrata="DIALOG">
+		<Attributes>
+      <Attribute name="type" type="string" value="macro" />
+      <Attribute name="macrotext1" type="string" value="" />
+    </Attributes>
+		<Size>
+			<AbsDimension x="90" y="15" />
+		</Size>
+		<ButtonText name="$parentText">
+			<Anchors>
+				<Anchor point="LEFT">
+					<Offset>
+						<AbsDimension x="0" y="1" />
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</ButtonText>
+		<Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga" tile="false">
+                    <EdgeSize>
+                        <AbsValue val="13"/>
+                    </EdgeSize>
+                    <BackgroundInsets>
+                        <AbsInset left="2" right="2" top="2" bottom="2"/>
+                    </BackgroundInsets>
+                    <Color r="0" g="0.4" b="1" a="1"/>
+                </Backdrop>
+		<NormalFont style="GenieFontNormalSmall" />
+		<HighlightFont style="GenieFontHighlightSmall" />
+		<DisabledFont style="GenieFontDisableSmall" />
+	</Button>
+	<Button name="Xavier_Hud" inherits="Xavier_Window">
+		<Size>
+			<AbsDimension x="170" y="268" />
+		</Size>
+		<Anchors>
+			<Anchor point="TOPRIGHT" relativeTo="MinimapCluster" relativePoint="BOTTOMRIGHT" />
+		</Anchors>
+    <Scripts>
+      <OnLoad>
+        Xavier.loadWindow(self, 'XAVIER', true, function() Xavier.Hud.checkStatus(); end);
+      </OnLoad>
+      <OnDoubleClick>
+        self:ClearAllPoints();
+        self:SetPoint("TOPRIGHT", MinimapCluster, "BOTTOMRIGHT");
+      </OnDoubleClick>
+    </Scripts>
+		<Frames>
+			<Button name="$parent_GM" inherits="Xavier_Button" text="ГМ ВКЛ">
+				<Size>
+					<AbsDimension x="77" y="18" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset x="-87" y="-21" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+            Xavier.Hud.toggleGm();
+          </OnClick>
+				</Scripts>
+				<Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga" tile="false">
+                    <EdgeSize>
+                        <AbsValue val="13"/>
+                    </EdgeSize>
+                    <BackgroundInsets>
+                        <AbsInset left="2" right="2" top="2" bottom="2"/>
+                    </BackgroundInsets>
+                    <Color r="0" g="0.4" b="1" a="1"/>
+                </Backdrop>
+			</Button>
+			<Button name="$parent_Chat" inherits="Xavier_Button" text="Чат ВКЛ">
+				<Size>
+					<AbsDimension x="77" y="18" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset x="-87" y="-42" />
+					</Anchor>
+				</Anchors>
+				<Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga">
+					<BackgroundInsets>
+						<AbsInset left="2" right="2" top="2" bottom="2" />
+					</BackgroundInsets>
+					<EdgeSize>
+						<AbsValue val="13" />
+					</EdgeSize>
+					<Color r="0" g="0.4" b="1" />
+				</Backdrop>
+				<Scripts>
+					<OnClick>
+                        Xavier.Hud.togglechat();
+                    </OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_GMoff" inherits="Xavier_Button" text="ГМ ВЫКЛ">
+				<Size>
+					<AbsDimension x="76" y="18" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset x="41" y="-21" />
+					</Anchor>
+				</Anchors>
+				<Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga">
+					<BackgroundInsets>
+						<AbsInset left="2" right="2" top="2" bottom="2" />
+					</BackgroundInsets>
+					<EdgeSize>
+						<AbsValue val="13" />
+					</EdgeSize>
+					<Color r="0" g="0.4" b="1" />
+				</Backdrop>
+				<Scripts>
+					<OnClick>
+                        Xavier.Hud.toggleGmoff();
+                    </OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_chatoff" inherits="Xavier_Button" text="Чат ВЫКЛ">
+				<Size>
+					<AbsDimension x="76" y="18" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset x="41" y="-42" />
+					</Anchor>
+				</Anchors>
+				<Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga">
+					<BackgroundInsets>
+						<AbsInset left="2" right="2" top="2" bottom="2" />
+					</BackgroundInsets>
+					<EdgeSize>
+						<AbsValue val="13" />
+					</EdgeSize>
+					<Color r="0" g="0.4" b="1" />
+				</Backdrop>
+				<Scripts>
+					<OnClick>
+                        Xavier.Hud.togglechatoff();
+                    </OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_Pinfo" inherits="Xavier_Button" text="Инфо">
+				<Size>
+					<AbsDimension x="58" y="15" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset x="-51" y="-66" />
+					</Anchor>
+				</Anchors>
+				<Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga">
+					<BackgroundInsets>
+						<AbsInset left="2" right="2" top="2" bottom="2" />
+					</BackgroundInsets>
+					<EdgeSize>
+						<AbsValue val="13" />
+					</EdgeSize>
+					<Color r="0" g="0.4" b="1" />
+				</Backdrop>
+				<Scripts>
+					<OnClick>
+            Xavier.Hud.togglepinfo();
+          </OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_npcinfo" inherits="Xavier_Button" text="НПЦ Инфо">
+				<Size>
+					<AbsDimension x="58" y="15" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="Xavier_Hud_Pinfo">
+						<Offset x="0" y="-18" />
+					</Anchor>
+				</Anchors>
+				<Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga">
+					<BackgroundInsets>
+						<AbsInset left="2" right="2" top="2" bottom="2" />
+					</BackgroundInsets>
+					<EdgeSize>
+						<AbsValue val="13" />
+					</EdgeSize>
+					<Color r="0" g="0.4" b="1" />
+				</Backdrop>
+				<Scripts>
+					<OnClick>
+                        Xavier.Hud.togglenpcinfo();
+                    </OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_gmin" inherits="Xavier_Button" text="ГМ Лист">
+				<Size>
+					<AbsDimension x="58" y="15" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="Xavier_Hud_npcinfo">
+						<Offset x="0" y="-18" />
+					</Anchor>
+				</Anchors>
+				<Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga">
+					<BackgroundInsets>
+						<AbsInset left="2" right="2" top="2" bottom="2" />
+					</BackgroundInsets>
+					<EdgeSize>
+						<AbsValue val="13" />
+					</EdgeSize>
+					<Color r="0" g="0.4" b="1" />
+				</Backdrop>
+				<Scripts>
+					<OnClick>
+                        Xavier.Hud.togglegmin();
+                    </OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_demorph" inherits="Xavier_Button" text="Деморф">
+				<Size>
+					<AbsDimension x="58" y="18" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="Xavier_Hud_gmin">
+						<Offset x="0" y="-18" />
+					</Anchor>
+				</Anchors>
+				<Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga">
+					<BackgroundInsets>
+						<AbsInset left="2" right="2" top="2" bottom="2" />
+					</BackgroundInsets>
+					<EdgeSize>
+						<AbsValue val="13" />
+					</EdgeSize>
+					<Color r="0" g="0.4" b="1" />
+				</Backdrop>
+				<Scripts>
+					<OnClick>
+                        Xavier.Hud.toggledemorph();
+                    </OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_gsum" inherits="Xavier_Button" text="Груп Сум">
+				<Size>
+					<AbsDimension x="58" y="18" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="Xavier_Hud_demorph">
+						<Offset x="0" y="-21" />
+					</Anchor>
+				</Anchors>
+				<Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga">
+					<BackgroundInsets>
+						<AbsInset left="2" right="2" top="2" bottom="2" />
+					</BackgroundInsets>
+					<EdgeSize>
+						<AbsValue val="13" />
+					</EdgeSize>
+					<Color r="0" g="0.4" b="1" />
+				</Backdrop>
+				<Scripts>
+					<OnClick>
+                        Xavier.Hud.togglegsum();
+                    </OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_Visibilityon" inherits="Xavier_Button" text="Стелс ВЫКЛ">
+				<Size>
+					<AbsDimension x="60" y="15" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="Xavier_Hud_Chat" relativePoint="BOTTOM">
+						<Offset x="30" y="-6" />
+					</Anchor>
+				</Anchors>
+				<Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga">
+					<BackgroundInsets>
+						<AbsInset left="2" right="2" top="2" bottom="2" />
+					</BackgroundInsets>
+					<EdgeSize>
+						<AbsValue val="13" />
+					</EdgeSize>
+					<Color r="0" g="0.4" b="1" />
+				</Backdrop>
+				<Scripts>
+					<OnClick>
+						Xavier.Hud.toggleVisibilityon();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_Visibilityoff" inherits="Xavier_Button" text="ВКЛ">
+				<Size>
+					<AbsDimension x="28" y="15" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="Xavier_Hud_Chat" relativePoint="BOTTOM">
+						<Offset x="92" y="-6" />
+					</Anchor>
+				</Anchors>
+				<Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga">
+					<BackgroundInsets>
+						<AbsInset left="2" right="2" top="2" bottom="2" />
+					</BackgroundInsets>
+					<EdgeSize>
+						<AbsValue val="13" />
+					</EdgeSize>
+					<Color r="0" g="0.4" b="1" />
+				</Backdrop>
+				<Scripts>
+					<OnClick>
+						Xavier.Hud.toggleVisibilityoff();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_Whisper" inherits="Xavier_Hud_Statusbutton" text="Личка">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="Xavier_Hud_Visibilityoff" relativePoint="BOTTOM">
+						<Offset x="-31" y="-3" />
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="$parent_Fly" inherits="Xavier_Hud_Statusbutton" text="ФХ">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="Xavier_Hud_Whisper" relativePoint="BOTTOM">
+						<Offset x="0" y="-3" />
+					</Anchor>
+				</Anchors>
+			</Button>
+			<EditBox name="$parent_Speed" inherits="Xavier_Input_Text">
+				<Size>
+					<AbsDimension x="35" y="18" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="Xavier_Hud_Fly" relativePoint="BOTTOMLEFT">
+						<Offset x="0" y="-3" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnEnterPressed>
+            Xavier.Hud.setSpeed();
+          </OnEnterPressed>
+				</Scripts>
+			</EditBox>
+			<Button name="$parent_SetSpeed" inherits="Xavier_Button" text="Скорость">
+				<Size>
+					<AbsDimension x="49" y="18" />
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="Xavier_Hud_Speed" relativePoint="RIGHT">
+						<Offset x="6" y="0" />
+					</Anchor>
+				</Anchors>
+				<Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga">
+					<BackgroundInsets>
+						<AbsInset left="2" right="2" top="2" bottom="2" />
+					</BackgroundInsets>
+					<EdgeSize>
+						<AbsValue val="13" />
+					</EdgeSize>
+					<Color r="0" g="0.4" b="1" />
+				</Backdrop>
+				<Scripts>
+					<OnClick>
+						Xavier.Hud.setSpeed();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<EditBox name="$parent_Scale" inherits="Xavier_Input_Text">
+				<Size>
+					<AbsDimension x="35" y="18" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="Xavier_Hud_Fly" relativePoint="BOTTOMLEFT">
+						<Offset x="0" y="-24" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnEnterPressed>
+        Xavier.Hud.setScale();
+      </OnEnterPressed>
+				</Scripts>
+			</EditBox>
+			<Button name="$parent_SetScale" inherits="Xavier_Button" text="Размер">
+				<Size>
+					<AbsDimension x="49" y="18" />
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="Xavier_Hud_Scale" relativePoint="RIGHT">
+						<Offset x="6" y="0" />
+					</Anchor>
+				</Anchors>
+				<Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga">
+					<BackgroundInsets>
+						<AbsInset left="2" right="2" top="2" bottom="2" />
+					</BackgroundInsets>
+					<EdgeSize>
+						<AbsValue val="13" />
+					</EdgeSize>
+					<Color r="0" g="0.4" b="1" />
+				</Backdrop>
+				<Scripts>
+					<OnClick>
+						Xavier.Hud.setScale();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<EditBox name="$parent_npcadd" inherits="Xavier_Input_Text">
+				<Size>
+					<AbsDimension x="104" y="18" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="Xavier_Hud_Fly" relativePoint="BOTTOMLEFT">
+						<Offset x="-69" y="-45" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnEnterPressed>
+						Xavier.Hud.setnpcadd();
+					</OnEnterPressed>
+				</Scripts>
+			</EditBox>
+			<Button name="$parent_setnpcadd" inherits="Xavier_Button" text="НПЦ Адд">
+				<Size>
+					<AbsDimension x="49" y="18" />
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="Xavier_Hud_npcadd" relativePoint="RIGHT">
+						<Offset x="6" y="0" />
+					</Anchor>
+				</Anchors>
+				<Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga">
+					<BackgroundInsets>
+						<AbsInset left="2" right="2" top="2" bottom="2" />
+					</BackgroundInsets>
+					<EdgeSize>
+						<AbsValue val="13" />
+					</EdgeSize>
+					<Color r="0" g="0.4" b="1" />
+				</Backdrop>
+				<Scripts>
+					<OnClick>
+						Xavier.Hud.setnpcadd();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<EditBox name="$parent_morphid" inherits="Xavier_Input_Text">
+				<Size>
+					<AbsDimension x="104" y="18" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="Xavier_Hud_Fly" relativePoint="BOTTOMLEFT">
+						<Offset x="-69" y="-66" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnEnterPressed>
+						Xavier.Hud.setmorphid();
+					</OnEnterPressed>
+				</Scripts>
+			</EditBox>
+			<Button name="$parent_setmorphid" inherits="Xavier_Button" text="Морфа">
+				<Size>
+					<AbsDimension x="49" y="18" />
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="Xavier_Hud_npcadd" relativePoint="RIGHT">
+						<Offset x="6" y="-21" />
+					</Anchor>
+				</Anchors>
+				<Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga">
+					<BackgroundInsets>
+						<AbsInset left="2" right="2" top="2" bottom="2" />
+					</BackgroundInsets>
+					<EdgeSize>
+						<AbsValue val="13" />
+					</EdgeSize>
+					<Color r="0" g="0.4" b="1" />
+				</Backdrop>
+				<Scripts>
+					<OnClick>
+						Xavier.Hud.setmorphid();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_senditem" inherits="Xavier_Button" text="Другое">
+				<Size>
+					<AbsDimension x="90" y="18" />
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="Xavier_Hud_npcadd" relativePoint="RIGHT">
+						<Offset x="-35" y="-42" />
+					</Anchor>
+				</Anchors>
+				<Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga">
+					<BackgroundInsets>
+						<AbsInset left="2" right="2" top="2" bottom="2" />
+					</BackgroundInsets>
+					<EdgeSize>
+						<AbsValue val="13" />
+					</EdgeSize>
+					<Color r="0" g="0.4" b="1" />
+				</Backdrop>
+				<Scripts>
+					<OnClick>
+						Xavier.Hud.toggleOthersWindow();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_Tickets" inherits="Xavier_Button" text="Запросы">
+				<Size>
+					<AbsDimension x="90" y="18" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="Xavier_Hud_Scale" relativePoint="BOTTOMLEFT">
+						<Offset x="0" y="-66" />
+					</Anchor>
+				</Anchors>
+				<Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga">
+					<BackgroundInsets>
+						<AbsInset left="2" right="2" top="2" bottom="2" />
+					</BackgroundInsets>
+					<EdgeSize>
+						<AbsValue val="13" />
+					</EdgeSize>
+					<Color r="0" g="0.4" b="1" />
+				</Backdrop>
+				<Scripts>
+					<OnClick>
+						Xavier.Tickets.toggle();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_Builder" inherits="Xavier_Button" text="Билдер">
+				<Size>
+					<AbsDimension x="90" y="18" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="Xavier_Hud_Tickets" relativePoint="BOTTOMLEFT">
+						<Offset x="0" y="-3" />
+					</Anchor>
+				</Anchors>
+				<Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga">
+					<BackgroundInsets>
+						<AbsInset left="2" right="2" top="2" bottom="2" />
+					</BackgroundInsets>
+					<EdgeSize>
+						<AbsValue val="13" />
+					</EdgeSize>
+					<Color r="0" g="0.4" b="1" />
+				</Backdrop>
+				<Scripts>
+					<OnClick>
+                        Xavier.Spawns.toggle();
+                    </OnClick>
+				</Scripts>
+			</Button>
+			<Frame name="Frame1">
+				<Size>
+					<AbsDimension x="63" y="60" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="5" y="-204" />
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<Texture name="Texture1" file="Interface\AddOns\Xavier\Textures\Aura26.tga">
+							<Size>
+								<AbsDimension x="57" y="54" />
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset x="3" y="-3" />
+								</Anchor>
+							</Anchors>
+							<Color r="0" g="0.7" b="1" />
+						</Texture>
+					</Layer>
+				</Layers>
+			</Frame>
+		</Frames>
+	</Button>
+	
+
+	
+	<Button name="Xavier_Hud_Others" inherits="Xavier_Window">
+        <Size>
+            <AbsDimension x="255" y="330"/>
+        </Size>
+        <Anchors>
+            <Anchor point="LEFT" relativeTo="Xavier_Hud" relativePoint="RIGHT" />
+        </Anchors>
+        <Scripts>
+            <OnLoad>
+                Xavier.loadWindow(self, 'Others', false, nil);
+            </OnLoad>
+            <OnDoubleClick>
+                self:ClearAllPoints();
+                self:SetPoint("LEFT", "Xavier_Xavier_Hud", "RIGHT");
+            </OnDoubleClick>
+        </Scripts>
+        <Frames>
+            <MessageFrame name="$parent_MessageFrame1" parent="Xavier_Hud_Others" toplevel="true" fade="false">
+				<FontString inherits="ErrorFont" justifyH="CENTER" />
+				<Size>
+					<AbsDimension x="231" y="54" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="Xavier_Hud_Others">
+						<Offset x="12" y="-29" />
+					</Anchor>
+				</Anchors>
+				<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga" tile="true">
+					<BackgroundInsets>
+						<AbsInset left="11" right="12" top="12" bottom="11" />
+					</BackgroundInsets>
+					<TileSize>
+						<AbsValue val="32" />
+					</TileSize>
+					<EdgeSize>
+						<AbsValue val="13" />
+					</EdgeSize>
+				</Backdrop>
+				<Frames>
+					<Button name="$parent_GM1" inherits="Xavier_Button" text=" &quot;Награда&quot; ">
+						<Size>
+							<AbsDimension x="0" y="0" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPRIGHT">
+								<Offset x="0" y="0" />
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="$parent_GM2" inherits="Xavier_Button" text="&quot;Поздравляем&quot; ">
+						<Size>
+							<AbsDimension x="0" y="0" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPRIGHT">
+								<Offset x="0" y="0" />
+							</Anchor>
+						</Anchors>
+					</Button>
+					<EditBox name="$parent_sendname" inherits="Xavier_Input_Text">
+						<Size>
+							<AbsDimension x="184" y="18" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset x="44" y="-9" />
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<EditBox name="$parent_senditemID" inherits="Xavier_Input_Text">
+						<Size>
+							<AbsDimension x="142" y="18" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset x="44" y="-33" />
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parent_senditem" inherits="Xavier_Button" text="==>">
+						<Size>
+							<AbsDimension x="36" y="18" />
+						</Size>
+						<Anchors>
+							<Anchor point="LEFT">
+								<Offset x="192" y="-15" />
+							</Anchor>
+						</Anchors>
+						<Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga">
+							<BackgroundInsets>
+								<AbsInset left="2" right="2" top="2" bottom="2" />
+							</BackgroundInsets>
+							<EdgeSize>
+								<AbsValue val="13" />
+							</EdgeSize>
+							<Color r="0" g="0.4" b="1" />
+						</Backdrop>
+						<Scripts>
+							<OnClick>
+						Xavier.Hud.senditem();
+					</OnClick>
+						</Scripts>
+					</Button>
+					<Frame name="$parent_Coords">
+						<Size>
+							<AbsDimension x="35" y="42" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOP">
+								<Offset x="-95" y="-9" />
+							</Anchor>
+						</Anchors>
+						<Layers>
+							<Layer>
+								<FontString name="$parent_X" inherits="GenieFontHighlightSmall" text="Ник:" justifyH="LEFT">
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset x="8" y="-4" />
+										</Anchor>
+									</Anchors>
+								</FontString>
+								<FontString name="$parent_Y" inherits="GenieFontHighlightSmall" text="ID:" justifyH="LEFT">
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset x="8" y="-28" />
+										</Anchor>
+									</Anchors>
+								</FontString>
+							</Layer>
+						</Layers>
+					</Frame>
+					<Frame name="Frame2">
+						<Size>
+							<AbsDimension x="134" y="15" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset x="50" y="7" />
+							</Anchor>
+						</Anchors>
+						<Backdrop bgFile="Interface\AddOns\Xavier\Textures\bg.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga" tile="true">
+							<BackgroundInsets>
+								<AbsInset left="2" right="2" top="2" bottom="2" />
+							</BackgroundInsets>
+							<TileSize>
+								<AbsValue val="3" />
+							</TileSize>
+							<EdgeSize>
+								<AbsValue val="13" />
+							</EdgeSize>
+						</Backdrop>
+						<Layers>
+							<Layer level="OVERLAY">
+								<FontString name="FontString1" inherits="GenieFonttitleSmall" text="Отправка предметов">
+									<Size>
+										<AbsDimension x="134" y="15" />
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset x="0" y="0" />
+										</Anchor>
+									</Anchors>
+								</FontString>
+							</Layer>
+						</Layers>
+					</Frame>
+				</Frames>
+			</MessageFrame>
+			<MessageFrame name="$parent_MessageFrame2" parent="Xavier_Hud_Others" toplevel="true" fade="false">
+				<FontString inherits="ErrorFont" justifyH="CENTER" />
+				<Size>
+					<AbsDimension x="231" y="54" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="Xavier_Hud_Others">
+						<Offset x="12" y="-90" />
+					</Anchor>
+				</Anchors>
+				<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga" tile="true">
+					<BackgroundInsets>
+						<AbsInset left="11" right="12" top="12" bottom="11" />
+					</BackgroundInsets>
+					<TileSize>
+						<AbsValue val="32" />
+					</TileSize>
+					<EdgeSize>
+						<AbsValue val="13" />
+					</EdgeSize>
+				</Backdrop>
+				<Frames>
+					<EditBox name="$parent_titles" inherits="Xavier_Input_Text">
+						<Size>
+							<AbsDimension x="164" y="18" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset x="64" y="-9" />
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parent_titlesadd" inherits="Xavier_Button" text="Добавить">
+						<Size>
+							<AbsDimension x="78" y="18" />
+						</Size>
+						<Anchors>
+							<Anchor point="LEFT">
+								<Offset x="150" y="-15" />
+							</Anchor>
+						</Anchors>
+						<Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga">
+							<BackgroundInsets>
+								<AbsInset left="2" right="2" top="2" bottom="2" />
+							</BackgroundInsets>
+							<EdgeSize>
+								<AbsValue val="13" />
+							</EdgeSize>
+							<Color r="0" g="0.4" b="1" />
+						</Backdrop>
+						<Scripts>
+							<OnClick>
+						Xavier.Hud.titlesadd();
+					</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="$parent_titlesdel" inherits="Xavier_Button" text="Удалить">
+						<Size>
+							<AbsDimension x="78" y="18" />
+						</Size>
+						<Anchors>
+							<Anchor point="LEFT">
+								<Offset x="64" y="-15" />
+							</Anchor>
+						</Anchors>
+						<Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga">
+							<BackgroundInsets>
+								<AbsInset left="2" right="2" top="2" bottom="2" />
+							</BackgroundInsets>
+							<EdgeSize>
+								<AbsValue val="13" />
+							</EdgeSize>
+							<Color r="0" g="0.4" b="1" />
+						</Backdrop>
+						<Scripts>
+							<OnClick>
+						Xavier.Hud.titlesdel();
+					</OnClick>
+						</Scripts>
+					</Button>
+					<Frame name="$parent_Coords">
+						<Size>
+							<AbsDimension x="55" y="18" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOP">
+								<Offset x="-85" y="-9" />
+							</Anchor>
+						</Anchors>
+						<Layers>
+							<Layer>
+								<FontString name="$parent_X" inherits="GenieFontHighlightSmall" text="ID Звания:" justifyH="LEFT">
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset x="8" y="-4" />
+										</Anchor>
+									</Anchors>
+								</FontString>
+							</Layer>
+						</Layers>
+					</Frame>
+					<Frame name="Frame2">
+						<Size>
+							<AbsDimension x="134" y="15" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset x="50" y="7" />
+							</Anchor>
+						</Anchors>
+						<Backdrop bgFile="Interface\AddOns\Xavier\Textures\bg.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga" tile="true">
+							<BackgroundInsets>
+								<AbsInset left="2" right="2" top="2" bottom="2" />
+							</BackgroundInsets>
+							<TileSize>
+								<AbsValue val="3" />
+							</TileSize>
+							<EdgeSize>
+								<AbsValue val="13" />
+							</EdgeSize>
+						</Backdrop>
+						<Layers>
+							<Layer level="OVERLAY">
+								<FontString name="FontString1" inherits="GenieFonttitleSmall" text="Звание">
+									<Size>
+										<AbsDimension x="134" y="15" />
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset x="0" y="0" />
+										</Anchor>
+									</Anchors>
+								</FontString>
+							</Layer>
+						</Layers>
+					</Frame>
+				</Frames>
+			</MessageFrame>
+        </Frames>
+    </Button>
+</Ui>

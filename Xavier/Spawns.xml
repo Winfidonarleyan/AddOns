@@ -1,0 +1,783 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ 
+ ..\..\FrameXML\UI.xsd">
+    <Button name="Xavier_Spawns_Main" inherits="Xavier_Window" hidden="true">
+        <Size>
+            <AbsDimension x="180" y="267"/>
+        </Size>
+        <Anchors>
+            <Anchor point="LEFT"/>
+		</Anchors>
+        <Scripts>
+            <OnLoad>
+                Xavier.loadWindow(self, 'Builder', false, nil);
+            </OnLoad>
+            <OnDoubleClick>
+                self:ClearAllPoints();
+                self:SetPoint("LEFT");
+            </OnDoubleClick>
+        </Scripts>
+        <Frames>
+            <Frame name="$parent_Coords">
+                <Size>
+                    <AbsDimension x="170" y="23"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP">
+                        <Offset>
+                            <AbsDimension x="0" y="-19"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Layers>
+                    <Layer>
+                        <FontString name="$parent_X" inherits="GenieFontNormalSmall" text="X:" justifyH="LEFT">
+                            <Anchors>
+                                <Anchor point="TOPLEFT" />
+                            </Anchors>
+                        </FontString>
+                        <FontString name="$parent_Y" inherits="GenieFontNormalSmall" text="Y:" justifyH="LEFT">
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="85" y="0"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+                        <FontString name="$parent_Z" inherits="GenieFontNormalSmall" text="Z:" justifyH="LEFT">
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="0" y="-10"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+                        <FontString name="$parent_O" inherits="GenieFontNormalSmall" text="O:" justifyH="LEFT">
+                            <Anchors>
+                                <Anchor point="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="85" y="-10"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+            </Frame>
+            <Frame name="$parent_ForwardBackward">
+                <Size>
+                    <AbsDimension x="170" y="19"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="$parent_Coords" relativePoint="BOTTOM" />
+                </Anchors>
+                <Layers>
+                    <Layer>
+                        <FontString name="$parent_Title" inherits="GenieFontNormalSmall" text="Move:" justifyH="LEFT">
+                            <Anchors>
+                                <Anchor point="LEFT">
+                                    <Offset>
+                                        <AbsDimension x="0" y="1"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+                <Frames>
+                    <EditBox name="$parent_Amount" inherits="Xavier_Input_Text">
+                        <Size>
+                            <AbsDimension x="65" y="18" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="LEFT">
+                                <Offset>
+                                    <AbsDimension x="40" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </EditBox>
+                    <Button name="$parent_Direction" inherits="Xavier_Dropdown" text="forward">
+                        <Size>
+                            <AbsDimension x="65" y="18" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="LEFT">
+                                <Offset>
+                                    <AbsDimension x="105" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                                ToggleDropDownMenu(1, nil, Xavier_Spawns_Main_ForwardBackward_Dropdownbuttons, Xavier_Spawns_Main_ForwardBackward_Direction, 0, 0);
+                            </OnClick>
+                        </Scripts>
+                        <Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga" tile="false">
+                    <EdgeSize>
+                        <AbsValue val="13"/>
+                    </EdgeSize>
+                    <BackgroundInsets>
+                        <AbsInset left="2" right="2" top="2" bottom="2"/>
+                    </BackgroundInsets>
+                    <Color r="0" g="0.4" b="1" a="1"/>
+                </Backdrop>
+                    </Button>
+                    <Frame name="$parent_Dropdownbuttons" inherits="UIDropDownMenuTemplate" id="50" />
+                </Frames>
+            </Frame>
+            <Frame name="$parent_LeftRight">
+                <Size>
+                    <AbsDimension x="170" y="19"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="$parent_ForwardBackward" relativePoint="BOTTOM" />
+                </Anchors>
+                <Layers>
+                    <Layer>
+                        <FontString name="$parent_Title" inherits="GenieFontNormalSmall" text="Move:" justifyH="LEFT">
+                            <Anchors>
+                                <Anchor point="LEFT">
+                                    <Offset>
+                                        <AbsDimension x="0" y="1"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+                <Frames>
+                    <EditBox name="$parent_Amount" inherits="Xavier_Input_Text">
+                        <Size>
+                            <AbsDimension x="65" y="18" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="LEFT">
+                                <Offset>
+                                    <AbsDimension x="40" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </EditBox>
+                    <Button name="$parent_Direction" inherits="Xavier_Dropdown" text="left">
+                        <Size>
+                            <AbsDimension x="65" y="18" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="LEFT">
+                                <Offset>
+                                    <AbsDimension x="105" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                                ToggleDropDownMenu(1, nil, Xavier_Spawns_Main_LeftRight_Dropdownbuttons, Xavier_Spawns_Main_LeftRight_Direction, 0, 0);
+                            </OnClick>
+                        </Scripts>
+                        <Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga" tile="false">
+                    <EdgeSize>
+                        <AbsValue val="13"/>
+                    </EdgeSize>
+                    <BackgroundInsets>
+                        <AbsInset left="2" right="2" top="2" bottom="2"/>
+                    </BackgroundInsets>
+                    <Color r="0" g="0.4" b="1" a="1"/>
+                </Backdrop>
+                    </Button>
+                    <Frame name="$parent_Dropdownbuttons" inherits="UIDropDownMenuTemplate" id="50" />
+                </Frames>
+            </Frame>
+            <Frame name="$parent_UpDown">
+                <Size>
+                    <AbsDimension x="170" y="19"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="$parent_LeftRight" relativePoint="BOTTOM" />
+                </Anchors>
+                <Layers>
+                    <Layer>
+                        <FontString name="$parent_Title" inherits="GenieFontNormalSmall" text="Move:" justifyH="LEFT">
+                            <Anchors>
+                                <Anchor point="LEFT">
+                                    <Offset>
+                                        <AbsDimension x="0" y="1"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+                <Frames>
+                    <EditBox name="$parent_Amount" inherits="Xavier_Input_Text">
+                        <Size>
+                            <AbsDimension x="65" y="18" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="LEFT">
+                                <Offset>
+                                    <AbsDimension x="40" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </EditBox>
+                    <Button name="$parent_Direction" inherits="Xavier_Dropdown" text="up">
+                        <Size>
+                            <AbsDimension x="65" y="18" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="LEFT">
+                                <Offset>
+                                    <AbsDimension x="105" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                                ToggleDropDownMenu(1, nil, Xavier_Spawns_Main_UpDown_Dropdownbuttons, Xavier_Spawns_Main_UpDown_Direction, 0, 0);
+                            </OnClick>
+                        </Scripts>
+                        <Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga" tile="false">
+                    <EdgeSize>
+                        <AbsValue val="13"/>
+                    </EdgeSize>
+                    <BackgroundInsets>
+                        <AbsInset left="2" right="2" top="2" bottom="2"/>
+                    </BackgroundInsets>
+                    <Color r="0" g="0.4" b="1" a="1"/>
+                </Backdrop>
+                    </Button>
+                    <Frame name="$parent_Dropdownbuttons" inherits="UIDropDownMenuTemplate" id="50" />
+                </Frames>
+            </Frame>
+            <Frame name="$parent_Rotate">
+                <Size>
+                    <AbsDimension x="170" y="19"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="$parent_UpDown" relativePoint="BOTTOM" />
+                </Anchors>
+                <Layers>
+                    <Layer>
+                        <FontString name="$parent_Title" inherits="GenieFontNormalSmall" text="degrees" justifyH="LEFT">
+                            <Anchors>
+                                <Anchor point="LEFT">
+                                    <Offset>
+                                        <AbsDimension x="130" y="1"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+                <Frames>
+                    <Button name="$parent_Direction" inherits="Xavier_Dropdown" text="Rotate left">
+                        <Size>
+                            <AbsDimension x="80" y="18" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="LEFT">
+                                <Offset>
+                                    <AbsDimension x="0" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                                ToggleDropDownMenu(1, nil, Xavier_Spawns_Main_Rotate_Dropdownbuttons, Xavier_Spawns_Main_Rotate_Direction, 0, 0);
+                            </OnClick>
+                        </Scripts>
+                        <Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga" tile="false">
+                    <EdgeSize>
+                        <AbsValue val="13"/>
+                    </EdgeSize>
+                    <BackgroundInsets>
+                        <AbsInset left="2" right="2" top="2" bottom="2"/>
+                    </BackgroundInsets>
+                    <Color r="0" g="0.4" b="1" a="1"/>
+                </Backdrop>
+                    </Button>
+                    <Frame name="$parent_Dropdownbuttons" inherits="UIDropDownMenuTemplate" id="50" />
+                    <EditBox name="$parent_Amount" inherits="Xavier_Input_Text">
+                        <Size>
+                            <AbsDimension x="50" y="18" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="LEFT">
+                                <Offset>
+                                    <AbsDimension x="80" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </EditBox>
+                </Frames>
+            </Frame>
+            <Frame name="$parent_Object">
+                <Size>
+                    <AbsDimension x="170" y="19"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="$parent_Rotate" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-4"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Layers>
+                    <Layer>
+                        <FontString name="$parent_Title" inherits="GenieFontNormalSmall" text="Object:" justifyH="LEFT">
+                            <Anchors>
+                                <Anchor point="LEFT">
+                                    <Offset>
+                                        <AbsDimension x="0" y="1"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+                <Frames>
+                    <Button name="$parent_Dropdown" inherits="Xavier_Dropdown" text="Presets">
+                        <Size>
+                            <AbsDimension x="65" y="18" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="LEFT">
+                                <Offset>
+                                    <AbsDimension x="40" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                                ToggleDropDownMenu(1, nil, Xavier_Spawns_Main_Object_Dropdownbuttons, Xavier_Spawns_Main_Object_Dropdown, 0, 0);
+                            </OnClick>
+                        </Scripts>
+                        <Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga" tile="false">
+                    <EdgeSize>
+                        <AbsValue val="13"/>
+                    </EdgeSize>
+                    <BackgroundInsets>
+                        <AbsInset left="2" right="2" top="2" bottom="2"/>
+                    </BackgroundInsets>
+                    <Color r="0" g="0.4" b="1" a="1"/>
+                </Backdrop>
+                    </Button>
+                    <Frame name="$parent_Dropdownbuttons" inherits="UIDropDownMenuTemplate" id="50" />
+                    <EditBox name="$parent_Id" inherits="Xavier_Input_Text">
+                        <Size>
+                            <AbsDimension x="65" y="18" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="LEFT">
+                                <Offset>
+                                    <AbsDimension x="105" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </EditBox>
+                </Frames>
+            </Frame>
+            <Frame name="$parent_Npc">
+                <Size>
+                    <AbsDimension x="170" y="19"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="$parent_Object" relativePoint="BOTTOM" />
+                </Anchors>
+                <Layers>
+                    <Layer>
+                        <FontString name="$parent_Title" inherits="GenieFontNormalSmall" text="Npc:" justifyH="LEFT">
+                            <Anchors>
+                                <Anchor point="LEFT">
+                                    <Offset>
+                                        <AbsDimension x="0" y="1"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+                <Frames>
+                    <Button name="$parent_Dropdown" inherits="Xavier_Dropdown" text="Presets">
+                        <Size>
+                            <AbsDimension x="65" y="18" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="LEFT">
+                                <Offset>
+                                    <AbsDimension x="40" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                                ToggleDropDownMenu(1, nil, Xavier_Spawns_Main_Npc_Dropdownbuttons, Xavier_Spawns_Main_Npc_Dropdown, 0, 0);
+                            </OnClick>
+                        </Scripts>
+                        <Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga" tile="false">
+                    <EdgeSize>
+                        <AbsValue val="13"/>
+                    </EdgeSize>
+                    <BackgroundInsets>
+                        <AbsInset left="2" right="2" top="2" bottom="2"/>
+                    </BackgroundInsets>
+                    <Color r="0" g="0.4" b="1" a="1"/>
+                </Backdrop>
+                    </Button>
+                    <Frame name="$parent_Dropdownbuttons" inherits="UIDropDownMenuTemplate" id="50" />
+                    <EditBox name="$parent_Id" inherits="Xavier_Input_Text">
+                        <Size>
+                            <AbsDimension x="65" y="18" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="LEFT">
+                                <Offset>
+                                    <AbsDimension x="105" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </EditBox>
+                </Frames>
+            </Frame>
+            <Frame name="$parent_Buttons">
+                <Size>
+                    <AbsDimension x="170" y="98"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="$parent_Npc" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-4"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Frames>
+                    <Button name="$parent_Move" inherits="Xavier_Button" text="Move">
+                        <Size>
+                            <AbsDimension x="85" y="18" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT" />
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                                Xavier.Spawns.initiateMove(0);
+                            </OnClick>
+                        </Scripts>
+                        <Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga" tile="false">
+                    <EdgeSize>
+                        <AbsValue val="13"/>
+                    </EdgeSize>
+                    <BackgroundInsets>
+                        <AbsInset left="2" right="2" top="2" bottom="2"/>
+                    </BackgroundInsets>
+                    <Color r="0" g="0.4" b="1" a="1"/>
+                </Backdrop>
+                    </Button>
+                    <Button name="$parent_MoveBack" inherits="Xavier_Button" text="Move back">
+                        <Size>
+                            <AbsDimension x="85" y="18" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" />
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                                Xavier.Spawns.initiateMove(-1);
+                            </OnClick>
+                        </Scripts>
+                        <Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga" tile="false">
+                    <EdgeSize>
+                        <AbsValue val="13"/>
+                    </EdgeSize>
+                    <BackgroundInsets>
+                        <AbsInset left="2" right="2" top="2" bottom="2"/>
+                    </BackgroundInsets>
+                    <Color r="0" g="0.4" b="1" a="1"/>
+                </Backdrop>
+                    </Button>
+                    <Button name="$parent_SpawnObject" inherits="Xavier_Button" text="Add object">
+                        <Size>
+                            <AbsDimension x="85" y="18" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT">
+                                <Offset>
+                                    <AbsDimension x="0" y="-19"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                                Xavier.Spawns.object(Xavier_Spawns_Main_Object_Id:GetText());
+                            </OnClick>
+                        </Scripts>
+                        <Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga" tile="false">
+                    <EdgeSize>
+                        <AbsValue val="13"/>
+                    </EdgeSize>
+                    <BackgroundInsets>
+                        <AbsInset left="2" right="2" top="2" bottom="2"/>
+                    </BackgroundInsets>
+                    <Color r="0" g="0.4" b="1" a="1"/>
+                </Backdrop>
+                    </Button>
+                    <Button name="$parent_SpawnNpc" inherits="Xavier_Button" text="Add npc">
+                        <Size>
+                            <AbsDimension x="85" y="18" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="0" y="-19"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                                Xavier.Spawns.npc(Xavier_Spawns_Main_Npc_Id:GetText());
+                            </OnClick>
+                        </Scripts>
+                        <Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga" tile="false">
+                    <EdgeSize>
+                        <AbsValue val="13"/>
+                    </EdgeSize>
+                    <BackgroundInsets>
+                        <AbsInset left="2" right="2" top="2" bottom="2"/>
+                    </BackgroundInsets>
+                    <Color r="0" g="0.4" b="1" a="1"/>
+                </Backdrop>
+                    </Button>
+                    <Button name="$parent_MoveSpawnObject" inherits="Xavier_Button" text="Move + object">
+                        <Size>
+                            <AbsDimension x="85" y="18" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT">
+                                <Offset>
+                                    <AbsDimension x="0" y="-38"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                                Xavier.Spawns.initiateMove(1);
+                            </OnClick>
+                        </Scripts>
+                        <Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga" tile="false">
+                    <EdgeSize>
+                        <AbsValue val="13"/>
+                    </EdgeSize>
+                    <BackgroundInsets>
+                        <AbsInset left="2" right="2" top="2" bottom="2"/>
+                    </BackgroundInsets>
+                    <Color r="0" g="0.4" b="1" a="1"/>
+                </Backdrop>
+                    </Button>
+                    <Button name="$parent_MoveSpawnNpc" inherits="Xavier_Button" text="Move + npc">
+                        <Size>
+                            <AbsDimension x="85" y="18" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="0" y="-38"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                                Xavier.Spawns.initiateMove(2);
+                            </OnClick>
+                        </Scripts>
+                        <Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga" tile="false">
+                    <EdgeSize>
+                        <AbsValue val="13"/>
+                    </EdgeSize>
+                    <BackgroundInsets>
+                        <AbsInset left="2" right="2" top="2" bottom="2"/>
+                    </BackgroundInsets>
+                    <Color r="0" g="0.4" b="1" a="1"/>
+                </Backdrop>
+                    </Button>
+                    <Button name="$parent_DeleteObject" inherits="Xavier_Button" text="Delete object">
+                        <Size>
+                            <AbsDimension x="85" y="18" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT">
+                                <Offset>
+                                    <AbsDimension x="0" y="-57"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                                Xavier.Spawns.targetObject();
+                            </OnClick>
+                        </Scripts>
+                        <Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga" tile="false">
+                    <EdgeSize>
+                        <AbsValue val="13"/>
+                    </EdgeSize>
+                    <BackgroundInsets>
+                        <AbsInset left="2" right="2" top="2" bottom="2"/>
+                    </BackgroundInsets>
+                    <Color r="0" g="0.4" b="1" a="1"/>
+                </Backdrop>
+                    </Button>
+                    <Button name="$parent_DeleteNpc" inherits="Xavier_Button" text="Delete npc">
+                        <Size>
+                            <AbsDimension x="85" y="18" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="0" y="-57"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                                Xavier.Spawns.deleteNpc();
+                            </OnClick>
+                        </Scripts>
+                        <Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga" tile="false">
+                    <EdgeSize>
+                        <AbsValue val="13"/>
+                    </EdgeSize>
+                    <BackgroundInsets>
+                        <AbsInset left="2" right="2" top="2" bottom="2"/>
+                    </BackgroundInsets>
+                    <Color r="0" g="0.4" b="1" a="1"/>
+                </Backdrop>
+                    </Button>
+                    <Button name="$parent_ResetCoords" inherits="Xavier_Button" text="Reset coords">
+                        <Size>
+                            <AbsDimension x="85" y="18" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT">
+                                <Offset>
+                                    <AbsDimension x="0" y="-80"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                                Xavier.Spawns.resetCoords();
+                            </OnClick>
+                        </Scripts>
+                        <Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga" tile="false">
+                    <EdgeSize>
+                        <AbsValue val="13"/>
+                    </EdgeSize>
+                    <BackgroundInsets>
+                        <AbsInset left="2" right="2" top="2" bottom="2"/>
+                    </BackgroundInsets>
+                    <Color r="0" g="0.4" b="1" a="1"/>
+                </Backdrop>
+                    </Button>
+                    <Button name="$parent_Macros" inherits="Xavier_Button" text="Macro">
+                        <Size>
+                            <AbsDimension x="85" y="18" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="0" y="-80"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+                                Xavier.Spawns.toggleMacroWindow();
+                            </OnClick>
+                        </Scripts>
+                        <Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga" tile="false">
+                    <EdgeSize>
+                        <AbsValue val="13"/>
+                    </EdgeSize>
+                    <BackgroundInsets>
+                        <AbsInset left="2" right="2" top="2" bottom="2"/>
+                    </BackgroundInsets>
+                    <Color r="0" g="0.4" b="1" a="1"/>
+                </Backdrop>
+                    </Button>
+                </Frames>
+            </Frame>
+        </Frames>
+    </Button>
+
+    <Button name="Xavier_Spawns_Macro" inherits="Xavier_Window" hidden="true">
+        <Size>
+            <AbsDimension x="255" y="330"/>
+        </Size>
+        <Anchors>
+            <Anchor point="LEFT" relativeTo="Xavier_Spawns_Main" relativePoint="RIGHT" />
+        </Anchors>
+        <Scripts>
+            <OnLoad>
+                Xavier.loadWindow(self, 'Spawn Macro', false, nil);
+            </OnLoad>
+            <OnDoubleClick>
+                self:ClearAllPoints();
+                self:SetPoint("LEFT", "Xavier_Spawns_Main", "RIGHT");
+            </OnDoubleClick>
+        </Scripts>
+        <Frames>
+            <Frame name="$parent_Macro" inherits="Xavier_Input_TextArea" resizable="true" enableMouse="true">
+                <Size>
+                    <AbsDimension x="220" y="280" />
+                </Size>
+                <ResizeBounds>
+                    <minResize x="220" y="280"/>
+                    <maxResize x="380" y="460"/>
+                </ResizeBounds>
+                <Anchors>
+                    <Anchor point="TOP">
+                        <Offset>
+                            <AbsDimension x="-12" y="-19"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        Xavier.loadEditBox(self);
+                    </OnLoad>
+                </Scripts>
+            </Frame>
+            <Button name="$parent_Run" inherits="Xavier_Button" text="Run macro">
+                <Size>
+                    <AbsDimension x="85" y="18" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="$parent_Macro" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="12" y="-5"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Xavier.Spawns.runMacro();
+                    </OnClick>
+                </Scripts>
+                <Backdrop bgfile="Interface\AddOns\Xavier\Textures\RenaitreMinion.tga" edgeFile="Interface\AddOns\Xavier\Textures\Stripped_small_white.tga" tile="false">
+                    <EdgeSize>
+                        <AbsValue val="13"/>
+                    </EdgeSize>
+                    <BackgroundInsets>
+                        <AbsInset left="2" right="2" top="2" bottom="2"/>
+                    </BackgroundInsets>
+                    <Color r="0" g="0.4" b="1" a="1"/>
+                </Backdrop>
+            </Button>
+        </Frames>
+    </Button>
+    
+    <Frame name="Xavier_Spawns_Hyperlink_Menu" inherits="UIDropDownMenuTemplate" id="51" />
+</Ui>
