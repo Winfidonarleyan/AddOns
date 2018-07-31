@@ -1,0 +1,29 @@
+## Interface: 30300
+## Title: |cff6C8CD5Kargatum Link
+## Author: Kargatum
+## Version: 3.3.5a
+## URL: http://kargatum.ru
+## Name: |cff6C8CD5Kargatum Link
+## OptionalDeps: AceLibrary, AceEvent-2.0, AceHook-2.1, AceDebug-2.0, AceLocale-2.2, AceConsole-2.0, AceAddon-2.0
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: KargatumLinkDb
+## SavedVariablesPerCharacter: KargatumLinkDbPerChar
+Libraries\AceLibrary\AceLibrary.lua
+Libraries\AceOO-2.0\AceOO-2.0.lua
+Libraries\AceEvent-2.0\AceEvent-2.0.lua
+Libraries\AceHook-2.1\AceHook-2.1.lua
+Libraries\AceDB-2.0\AceDB-2.0.lua
+Libraries\AceDebug-2.0\AceDebug-2.0.lua
+Libraries\AceLocale-2.2\AceLocale-2.2.lua
+Libraries\AceConsole-2.0\AceConsole-2.0.lua
+Libraries\AceAddon-2.0\AceAddon-2.0.lua
+Libraries\Tablet-2.0\Tablet-2.0.lua
+Libraries\DewDrop-2.0\DewDrop-2.0.lua
+Libraries\FrameLib-1.0\FrameLib-1.0.lua
+Libraries\FuBarPlugin-2.0\FuBarPlugin-2.0.lua
+Libraries\Graph-1.0\Graph-1.0.lua
+Locales\ruRU.lua
+Locales\strings.lua
+KargatumLink.lua
+KargatumLinkifier.lua
